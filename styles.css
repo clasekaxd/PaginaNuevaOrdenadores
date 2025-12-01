@@ -31,6 +31,45 @@ main {
     /* Espaciado interno para el contenido */
     padding: 2rem;
     text-align: center; /* Centra el contenido */
+    background: linear-gradient(to bottom, #f9f9f9, #e9ecef);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 2rem auto;
+    max-width: 800px;
+}
+
+/* Estilos mejorados para el contenido principal del index */
+main h2 {
+    font-size: 2.5rem;
+    color: #007BFF;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+main p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+main ul {
+    list-style-type: none;
+    margin: 1rem auto;
+    padding: 0;
+    max-width: 600px;
+    text-align: left;
+}
+
+main ul li {
+    font-size: 1.1rem;
+    color: #444;
+    margin-bottom: 0.75rem;
+    padding: 0.5rem;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 /* Estilos de la tabla */
@@ -93,19 +132,23 @@ footer {
 .button {
     /* Diseño de botón con relleno y bordes redondeados */
     display: inline-block;
-    margin-top: 1rem; /* Espaciado superior */
-    padding: 0.75rem 1.5rem; /* Relleno interno */
-    background: #007BFF; /* Color de fondo azul */
+    margin-top: 1.5rem; /* Espaciado superior */
+    padding: 0.75rem 2rem; /* Relleno interno */
+    background: #28a745; /* Color de fondo verde */
     color: #fff; /* Texto blanco para contraste */
     text-decoration: none; /* Elimina subrayado */
-    border-radius: 5px; /* Bordes redondeados */
-    font-size: 1rem; /* Tamaño de fuente estándar */
-    transition: background 0.3s ease; /* Transición suave al pasar el cursor */
+    border-radius: 50px; /* Bordes redondeados */
+    font-size: 1.2rem; /* Tamaño de fuente estándar */
+    font-weight: bold; /* Peso de la fuente */
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .button:hover {
     /* Color de fondo más oscuro al pasar el cursor */
-    background: #0056b3;
+    background: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
 /* Diseño responsivo */

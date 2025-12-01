@@ -5,14 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio - Catálogo de Piezas</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Asegura que el footer esté siempre al final de la página */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        main {
+            flex: 1; /* Ocupa el espacio disponible para empujar el footer hacia abajo */
+        }
+
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+    </style>
 </head>
 <body>
     <header>
         <h1>Bienvenido al Catálogo de Piezas de Ordenador</h1>
     </header>
     <main>
-        <p>Explora nuestro catálogo de piezas de ordenador haciendo clic en el botón de abajo.</p>
-        <a href="catalogo.html" class="button">Ver Catálogo</a>
+        <section>
+            <h2>¿Qué ofrecemos?</h2>
+            <p>En nuestro catálogo encontrarás una amplia variedad de piezas de ordenador, desde procesadores de última generación hasta discos duros de alta capacidad.</p>
+        </section>
+
+        <section>
+            <h2>Por qué elegirnos</h2>
+            <ul>
+                <li>Precios competitivos</li>
+                <li>Productos de alta calidad</li>
+                <li>Envíos rápidos y seguros</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Explora nuestro catálogo</h2>
+            <p>Haz clic en el botón de abajo para descubrir todas las piezas que tenemos para ti.</p>
+            <a href="catalogo.html" class="button">Ver Catálogo</a>
+        </section>
     </main>
     <footer>
         <p>&copy; 2025 Catálogo de Piezas</p>
