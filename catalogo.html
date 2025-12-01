@@ -1,36 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo de Piezas</title>
+    <meta charset="UTF-8"> <!-- Codificación de caracteres -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Catálogo de Piezas</title> 
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Encabezado principal -->
     <header>
-        <h1>Catálogo de Piezas de Ordenador</h1>
+        <h1>Catálogo de Piezas de Ordenador</h1> <!-- Título principal -->
     </header>
     <main>
+        <!-- Tabla que muestra las piezas disponibles -->
         <table>
             <thead>
                 <tr>
-                    <th>Seleccionar</th>
-                    <th>Nombre de la Pieza</th>
-                    <th>Descripción</th>
-                    <th>Precio</th>
-                    <th>Imagen</th>
+                    <th>Seleccionar</th> <!-- Columna para seleccionar piezas -->
+                    <th>Nombre de la Pieza</th> <!-- Nombre de cada pieza -->
+                    <th>Descripción</th> <!-- Breve descripción de la pieza -->
+                    <th>Precio</th> <!-- Precio de la pieza -->
+                    <th>Imagen</th> <!-- Imagen representativa de la pieza -->
                 </tr>
             </thead>
             <tbody>
+                <!-- Sección de procesadores -->
                 <tr>
-                    <th colspan="5">Procesadores</th>
+                    <th colspan="5">Procesadores</th> <!-- Título de la categoría -->
                 </tr>
                 <tr>
-                    <td><input type="checkbox" class="pieza" data-precio="200" data-categoria="procesador"></td>
-                    <td class="nombre-componente">Procesador Intel i5</td>
-                    <td>Procesador de 6 núcleos y 12 hilos</td>
-                    <td>$200</td>
-                    <td><img src="imgs/procesadores/intel-core-i5.jpg" alt="Procesador Intel i5" class="imagen-componente"></td>
+                    <td><input type="checkbox" class="pieza" data-precio="200" data-categoria="procesador"></td> <!-- Checkbox para seleccionar -->
+                    <td class="nombre-componente">Procesador Intel i5</td> <!-- Nombre del procesador -->
+                    <td>Procesador de 6 núcleos y 12 hilos</td> <!-- Descripción -->
+                    <td>$200</td> <!-- Precio -->
+                    <td><img src="imgs/procesadores/intel-core-i5.jpg" alt="Procesador Intel i5" class="imagen-componente"></td> <!-- Imagen -->
                 </tr>
                 <tr>
                     <td><input type="checkbox" class="pieza" data-precio="300" data-categoria="procesador"></td>
@@ -47,6 +50,7 @@
                     <td><img src="imgs/procesadores/ryzen7.jpg" alt="Procesador AMD Ryzen 7" class="imagen-componente"></td>
                 </tr>
 
+                <!-- Sección de tarjetas gráficas -->
                 <tr>
                     <th colspan="5">Tarjetas Gráficas</th>
                 </tr>
@@ -72,6 +76,7 @@
                     <td><img src="imgs/placeholder.png" alt="Tarjeta Gráfica AMD RX 6700 XT" class="imagen-componente"></td>
                 </tr>
 
+                <!-- Sección de memorias RAM -->
                 <tr>
                     <th colspan="5">Memorias RAM</th>
                 </tr>
@@ -97,6 +102,7 @@
                     <td><img src="imgs/placeholder.png" alt="Memoria RAM 32GB" class="imagen-componente"></td>
                 </tr>
 
+                <!-- Sección de almacenamiento -->
                 <tr>
                     <th colspan="5">Almacenamiento</th>
                 </tr>
@@ -122,6 +128,7 @@
                     <td><img src="imgs/placeholder.png" alt="Disco Duro SSD 2TB" class="imagen-componente"></td>
                 </tr>
 
+                <!-- Sección de torres -->
                 <tr>
                     <th colspan="5">Torres</th>
                 </tr>
@@ -149,53 +156,56 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="3">Precio Total:</td>
-                    <td id="precio-total">$0</td>
+                    <td colspan="3">Precio Total:</td> <!-- Etiqueta para el precio total -->
+                    <td id="precio-total">$0</td> <!-- Precio total dinámico -->
                 </tr>
                 <tr>
                     <td colspan="4" style="text-align: center;">
-                        <button id="boton-comprar" class="button">Comprar</button>
+                        <button id="boton-comprar" class="button">Comprar</button> <!-- Botón para comprar -->
                     </td>
                 </tr>
             </tfoot>
         </table>
-        <a href="index.html" class="button">Volver al Inicio</a>
+        <a href="index.html" class="button">Volver al Inicio</a> <!-- Enlace para regresar a la página principal -->
     </main>
     <footer>
-        <p>&copy; 2025 Catálogo de Piezas</p>
+        <p>&copy; 2025 Catálogo de Piezas</p> <!-- Pie de página con derechos de autor -->
     </footer>
     <script>
-                function actualizarPrecioTotal() {
-                    let total = 0;
-                    document.querySelectorAll('.pieza:checked').forEach(selected => {
-                        total += parseFloat(selected.getAttribute('data-precio'));
+        // Script para actualizar el precio total dinámicamente
+        function actualizarPrecioTotal() {
+            let total = 0;
+            document.querySelectorAll('.pieza:checked').forEach(selected => {
+                total += parseFloat(selected.getAttribute('data-precio'));
+            });
+            document.getElementById('precio-total').textContent = `$${total.toFixed(2)}`;
+        }
+
+        // Manejo de eventos para las casillas de selección
+        document.querySelectorAll('.pieza').forEach(checkbox => {
+            checkbox.addEventListener('change', (event) => {
+                const categoria = event.target.getAttribute('data-categoria');
+                if (categoria) {
+                    document.querySelectorAll(`.pieza[data-categoria="${categoria}"]`).forEach(otherCheckbox => {
+                        if (otherCheckbox !== event.target) {
+                            otherCheckbox.checked = false;
+                        }
                     });
-                    document.getElementById('precio-total').textContent = `$${total.toFixed(2)}`;
                 }
+                actualizarPrecioTotal();
+            });
+        });
 
-                document.querySelectorAll('.pieza').forEach(checkbox => {
-                    checkbox.addEventListener('change', (event) => {
-                        const categoria = event.target.getAttribute('data-categoria');
-                        if (categoria) {
-                            document.querySelectorAll(`.pieza[data-categoria="${categoria}"]`).forEach(otherCheckbox => {
-                                if (otherCheckbox !== event.target) {
-                                    otherCheckbox.checked = false;
-                                }
-                            });
-                        }
-                        actualizarPrecioTotal();
-                    });
-                });
-
-                document.querySelectorAll('.nombre-componente').forEach(label => {
-                    label.addEventListener('click', (event) => {
-                        const checkbox = event.target.closest('tr').querySelector('.pieza');
-                        if (checkbox) {
-                            checkbox.checked = !checkbox.checked;
-                            checkbox.dispatchEvent(new Event('change'));
-                        }
-                    });
-                });
-            </script>
+        // Permite seleccionar casillas haciendo clic en el nombre del componente
+        document.querySelectorAll('.nombre-componente').forEach(label => {
+            label.addEventListener('click', (event) => {
+                const checkbox = event.target.closest('tr').querySelector('.pieza');
+                if (checkbox) {
+                    checkbox.checked = !checkbox.checked;
+                    checkbox.dispatchEvent(new Event('change'));
+                }
+            });
+        });
+    </script>
 </body>
 </html>
